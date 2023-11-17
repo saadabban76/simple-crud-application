@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Products</title>
+</head>
+<body>
+    <h1>Display Products</h1>
+    <section id="productDisplay">
+        <!-- Products will be displayed here -->
+    </section>
+
+    <script>
+        // Fetch data from the server and display it
+        fetch('http://your-server-url/products')
+            .then(response => response.json())
+            .then(data => {
+                const productDisplay = document.getElementById('productDisplay');
+                data.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.textContent = `ID: ${product.id}, Name: ${product.name}, Price: ${product.price}, Supplier ID: ${product.supplierId}, Company Name: ${product.companyName}`;
+                    productDisplay.appendChild(productElement);
+                });
+            });
+    </script>
+</body>
+</html>
